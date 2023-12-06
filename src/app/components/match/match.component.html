@@ -1,0 +1,31 @@
+<div class="match">
+  <div class="crests">
+    <div class="home">
+      <img
+        [src]="match.time_mandante.escudo"
+        [alt]="match.time_mandante.nome_popular"
+      />
+      <h1>{{ match.placar_mandante }}</h1>
+    </div>
+    <h2>X</h2>
+    <div class="visitor">
+      <h1>{{ match.placar_visitante }}</h1>
+      <img
+        [src]="match.time_visitante.escudo"
+        [alt]="match.time_visitante.nome_popular"
+      />
+    </div>
+  </div>
+
+  <div class="match-info">
+    <p
+      [ngClass]="
+        match.status.toUpperCase() == 'FINALIZADO' ? 'finished' : 'scheduled'
+      "
+    >
+      {{ match.status | titlecase }}
+    </p>
+    <p>{{ match.data_realizacao }} {{ match.hora_realizacao }}</p>
+    <p>{{ match.estadio.nome_popular }}</p>
+  </div>
+</div>
