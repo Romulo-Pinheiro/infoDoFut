@@ -1,0 +1,45 @@
+<div class="search">
+  <ng-select
+    id="select"
+    [items]="selectTeams$ | async"
+    bindLabel="nome_popular"
+    bindValue="id"
+    [(ngModel)]="selectedTeam"
+    [markFirst]="true"
+  >
+  </ng-select>
+
+  <button (click)="getTeam(selectedTeam)">Buscar</button>
+</div>
+
+<div class="result" *ngIf="teamInfo">
+  <div class="img-container">
+    <img [src]="teamInfo.time.escudo" [alt]="teamInfo.time.nome_popular" />
+  </div>
+  <div class="team-name">
+    <h1>
+      {{ teamInfo.time.nome_popular }}
+    </h1>
+    <h2>({{ teamInfo.time.sigla | uppercase }})</h2>
+  </div>
+  <div class="team-info">
+    <p>Posição: {{ teamInfo.posicao }}º</p>
+    <p class="green-text">Pontos: {{ teamInfo.pontos }}</p>
+    <p>Jogos: {{ teamInfo.jogos }}</p>
+    <p>
+      <span class="green-text">Vitórias: {{ teamInfo.vitorias }}</span> |
+      Empates: {{ teamInfo.empates }} |
+      <span class="red-text">Derrotas: {{ teamInfo.derrotas }}</span>
+    </p>
+    <p>
+      <span class="green-text">Gols Marcados: {{ teamInfo.gols_pro }}</span> |
+      <span class="red-text">Gols Sofridos: {{ teamInfo.gols_contra }}</span>
+    </p>
+    <p class="green-text">Saldo de Gols: {{ teamInfo.saldo_gols }}</p>
+    <p class="green-text">Aproveitamento: {{ teamInfo.aproveitamento }}</p>
+  </div>
+
+  <div class="qualification" [ngClass]="getQualification(teamInfo.posicao)">
+    <p>{{ qualification[getQualification(teamInfo.posicao)] }}</p>
+  </div>
+</div>
