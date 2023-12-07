@@ -56,7 +56,7 @@ export class TeamComponent implements OnInit {
     );
   }
 
-  getQualification(position: number): string {
+  getQualification(position: number) {
     if (position >= 17) {
       return 'relegation';
     } else if (position <= 12 && position > 6) {
