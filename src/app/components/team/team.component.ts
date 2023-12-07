@@ -38,7 +38,7 @@ export class TeamComponent implements OnInit {
     }
   }
 
-  getTeamsInfo() {
+  getTeamsInfo(): void {
     this.rankingService.rankingResult?.map((teamRanking: TeamRanking) => {
       this.teamsList?.push({
         id: teamRanking.time.time_id,
@@ -50,13 +50,13 @@ export class TeamComponent implements OnInit {
     });
   }
 
-  getTeam(id?: number) {
+  getTeam(id?: number): void {
     this.teamInfo = this.rankingService.rankingResult?.find(
       (teamRanking) => teamRanking.time.time_id == id
     );
   }
 
-  getQualification(position: number) {
+  getQualification(position: number): string {
     if (position >= 17) {
       return 'relegation';
     } else if (position <= 12 && position > 6) {
